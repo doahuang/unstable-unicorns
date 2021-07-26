@@ -1,4 +1,4 @@
-const BasicUnicorn = require('../types/basic_unicorn');
+const BasicUnicorn = require('../../types/basic_unicorn');
 
 module.exports = [
   new BasicUnicorn('Beards are like, so hot.'),
@@ -9,9 +9,5 @@ module.exports = [
   new BasicUnicorn('💖🙌💅🙌💖💁💁😂😂😂'),
   new BasicUnicorn(
     '#nomakeup #nofilter #sunnies #shameless #selfie #basic #TGIF #unicornhairdontcare'
-  ),
-  new BasicUnicorn(
-    'This card has no special powers, but it sure is cute!',
-    'Basic Narwhal'
   ),
 ];

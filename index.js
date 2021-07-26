@@ -1,3 +1,3 @@
-const deck = require('./deck');
+const deck = require('./cards/deck');
 
 console.log(deck);

@@ -1,4 +1,4 @@
-const MagicalUnicorn = require('../types/magical_unicorn');
+const MagicalUnicorn = require('../../types/magical_unicorn');
 
 module.exports = [
   new MagicalUnicorn(
