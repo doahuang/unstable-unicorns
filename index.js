@@ -1,3 +1,8 @@
-const deck = require('./cards/deck');
+const deck = require('./deck');
+const nursery = require('./nursery');
+const Discard = require('./types/discard');
+const Stable = require('./types/stable');
 
-console.log(deck);
+const discard = new Discard();
+const stable = new Stable();
+console.log(deck, nursery, discard, stable);

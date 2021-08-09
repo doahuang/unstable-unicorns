@@ -1,24 +1,17 @@
-class Deck {
-  #cards = [];
+const Stack = require('./stack');
 
+class Deck extends Stack {
   constructor(cards) {
-    this.#cards = cards;
-  }
-
-  counts() {
-    return this.#cards.length;
+    super(cards);
+    super.shuffle();
   }
 
   draw() {
-    return this.#cards.pop();
+    return this.show().pop();
   }
 
   peek(number = 1) {
-    return this.#cards.slice(this.counts() - number);
-  }
-
-  reveal() {
-    return this.#cards;
+    return this.show().slice(this.count() - number);
   }
 }
 
