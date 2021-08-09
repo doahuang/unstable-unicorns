@@ -1,8 +1,13 @@
 const Downgrade = require('../../types/downgrade');
 
-const NannyCam = new Downgrade(
-  'Nanny Cam',
-  'Your hand must be visible to all players.'
-);
+class NannyCam extends Downgrade {
+  constructor() {
+    super(
+      'Nanny Cam',
+      'Your hand must be visible to all players.',
+      'http://unstablegameswiki.com/images/8/8f/UU-Base-078-SE.png'
+    );
+  }
+}
 
 module.exports = NannyCam;

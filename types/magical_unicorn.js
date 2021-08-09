@@ -1,8 +1,8 @@
 const Unicorn = require('./unicorn');
 
 class MagicalUnicorn extends Unicorn {
-  constructor(name, desc) {
-    super(name, desc, 'Magical');
+  constructor(name, desc, img) {
+    super(name, 'Magical', desc, img);
   }
 }
 

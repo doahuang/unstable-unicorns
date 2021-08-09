@@ -8,12 +8,12 @@ const BlindingLight = require('./downgrades/blinding_light');
 const TinyStable = require('./downgrades/tiny_stable');
 
 module.exports = [
-  BarbedWire,
-  Pandamonium,
-  SadisticRitual,
-  Slowdown,
-  NannyCam,
-  BrokenStable,
-  BlindingLight,
-  TinyStable,
+  new BarbedWire(),
+  new Pandamonium(),
+  new SadisticRitual(),
+  new Slowdown(),
+  new NannyCam(),
+  new BrokenStable(),
+  new BlindingLight(),
+  new TinyStable(),
 ];
