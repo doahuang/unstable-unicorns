@@ -11,12 +11,21 @@
         ['#magical', magicalUnicorns],
     ]) {
         const list = document.querySelector(selector);
-        for (const unicorn of unicorns) {
+        for (let idx = 0; idx < unicorns.length; idx++) {
+            const unicorn = unicorns[idx];
             const card = document.createElement('li');
             const img = document.createElement('img');
+            img.alt = unicorn.name;
             img.width = 200;
-            img.loading = 'lazy';
-            img.src = 'https://wsrv.nl/?url=' + unicorn.img + '&w=400';
+            if (idx > 4) {
+                img.loading = 'lazy';
+            }
+            const url = 'wsrv.nl/?url=' + unicorn.img + '&w=400';
+            img.src =
+                'https://' +
+                url +
+                '&output=webp&default=ssl:' +
+                encodeURIComponent(url);
             const name = document.createElement('b');
             name.innerText = unicorn.name;
             const desc = document.createElement('p');

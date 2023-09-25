@@ -33,6 +33,14 @@ li h3 {
 
 .cards li {
     max-width: 200px;
+    position: relative;
+    user-select: none;
+}
+
+.cards li::before {
+    content: '';
+    inset: 0;
+    position: absolute;
 }
 
 .cards img {
