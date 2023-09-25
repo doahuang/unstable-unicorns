@@ -16,7 +16,7 @@
             const img = document.createElement('img');
             img.width = 200;
             img.loading = 'lazy';
-            img.src = unicorn.img;
+            img.src = 'https://wsrv.nl/?url=' + unicorn.img + '&w=400';
             const name = document.createElement('b');
             name.innerText = unicorn.name;
             const desc = document.createElement('p');
