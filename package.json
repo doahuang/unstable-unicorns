@@ -1,0 +1,11 @@
+{
+  "name": "unstable-unicorns",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:doahuang/unstable-unicorns.git",
+  "author": "doahuang <doahuang@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "npx browserify demo.js | npx uglify-js -mo bundle.js"
+  }
+}
