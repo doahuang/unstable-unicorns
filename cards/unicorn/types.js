@@ -1,9 +1,8 @@
-class Unicorn {
+const Card = require('../types');
+
+class Unicorn extends Card {
     constructor(name, desc, img) {
-        this.name = name;
-        this.desc = desc;
-        this.img = img;
-        Object.freeze(this);
+        super(name, desc, img);
     }
 }
 

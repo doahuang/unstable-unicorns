@@ -1,35 +1,35 @@
 (function () {
-    const {
-        babyUnicorns,
-        basicUnicorns,
-        magicalUnicorns,
-    } = require('./cards/unicorns');
+    const unicorns = require('./cards/unicorn/base-deck');
+    const deck = [
+        ['#baby-unicorn', unicorns.babyUnicorns],
+        ['#basic-unicorn', unicorns.basicUnicorns],
+        ['#magical-unicorn', unicorns.magicalUnicorns],
+        ['#magic', require('./cards/magic').baseDeckMagics],
+    ];
 
-    for (const [selector, unicorns] of [
-        ['#baby', babyUnicorns],
-        ['#basic', basicUnicorns],
-        ['#magical', magicalUnicorns],
-    ]) {
+    for (let row = 0; row < deck.length; row++) {
+        const [selector, arr] = deck[row];
         const list = document.querySelector(selector);
-        for (let idx = 0; idx < unicorns.length; idx++) {
-            const unicorn = unicorns[idx];
+        for (let col = 0; col < arr.length; col++) {
+            const el = arr[col];
             const card = document.createElement('li');
             const img = document.createElement('img');
-            img.alt = unicorn.name;
+            img.alt = el.name;
             img.width = 200;
-            if (idx > 4) {
+            // below the fold or not visible from carousel
+            if (row > 1 || col > 4) {
                 img.loading = 'lazy';
             }
-            const url = 'wsrv.nl/?url=' + unicorn.img + '&w=400';
+            const url = 'wsrv.nl/?url=' + el.img + '&w=400';
             img.src =
                 'https://' +
                 url +
                 '&output=webp&default=ssl:' +
                 encodeURIComponent(url);
             const name = document.createElement('b');
-            name.innerText = unicorn.name;
+            name.innerText = el.name;
             const desc = document.createElement('p');
-            desc.innerText = unicorn.desc;
+            desc.innerText = el.desc;
             card.append(img, name, desc);
             list.appendChild(card);
         }

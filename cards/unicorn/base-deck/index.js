@@ -1,4 +1,4 @@
-const { BabyUnicorn, BasicUnicorn, MagicalUnicorn } = require('./types');
+const { BabyUnicorn, BasicUnicorn, MagicalUnicorn } = require('../types');
 
 const babyUnicorns = require('./baby').map(
     ([name, img]) => new BabyUnicorn(name, img)
