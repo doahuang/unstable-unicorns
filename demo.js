@@ -5,6 +5,9 @@
         ['#basic-unicorn', unicorns.basicUnicorns],
         ['#magical-unicorn', unicorns.magicalUnicorns],
         ['#magic', require('./cards/magic').baseDeckMagics],
+        ['#upgrade', require('./cards/upgrade').baseDeckUpgrades],
+        ['#downgrade', require('./cards/downgrade').baseDeckDowngrades],
+        ['#instant', require('./cards/instant').baseDeckInstants],
     ];
 
     for (let row = 0; row < deck.length; row++) {
