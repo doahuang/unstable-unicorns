@@ -1,10 +1,4 @@
-const Card = require('../types');
-
-class Unicorn extends Card {
-    constructor(name, desc, img) {
-        super(name, desc, img);
-    }
-}
+const { Unicorn } = require('./cards');
 
 class BabyUnicorn extends Unicorn {
     constructor(name = 'Baby Unicorn', img) {

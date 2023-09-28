@@ -1,13 +1,13 @@
 (function () {
-    const unicorns = require('./cards/unicorn/base-deck');
+    const baseDeck = require('./cards/base-deck');
     const deck = [
-        ['#baby-unicorn', unicorns.babyUnicorns],
-        ['#basic-unicorn', unicorns.basicUnicorns],
-        ['#magical-unicorn', unicorns.magicalUnicorns],
-        ['#magic', require('./cards/magic').baseDeckMagics],
-        ['#upgrade', require('./cards/upgrade').baseDeckUpgrades],
-        ['#downgrade', require('./cards/downgrade').baseDeckDowngrades],
-        ['#instant', require('./cards/instant').baseDeckInstants],
+        ['#baby-unicorn', baseDeck.unicorn.baby],
+        ['#basic-unicorn', baseDeck.unicorn.basic],
+        ['#magical-unicorn', baseDeck.unicorn.magical],
+        ['#magic', baseDeck.magic],
+        ['#upgrade', baseDeck.upgrade],
+        ['#downgrade', baseDeck.downgrade],
+        ['#instant', baseDeck.instant],
     ];
 
     for (let row = 0; row < deck.length; row++) {
