@@ -1,42 +1,59 @@
-module.exports = Object.freeze([
+module.exports = [
     [
-        ,
-        'Beards are like, so hot.',
-        'http://unstablegameswiki.com/images/9/90/UU-Base-014-SE.png',
+        {
+            desc: 'Beards are like, so hot.',
+            img: '/images/9/90/UU-Base-014-SE.png',
+        },
+        3,
     ],
     [
-        ,
-        'Pumpkin spice is the pumpkin spice of life.',
-        'http://unstablegameswiki.com/images/6/66/UU-Base-015-SE.png',
+        {
+            desc: 'Pumpkin spice is the pumpkin spice of life.',
+            img: '/images/6/66/UU-Base-015-SE.png',
+        },
+        3,
     ],
     [
-        ,
-        "Dance like nobody's watching.",
-        'http://unstablegameswiki.com/images/3/38/UU-Base-016-SE.png',
+        {
+            desc: "Dance like nobody's watching.",
+            img: '/images/3/38/UU-Base-016-SE.png',
+        },
+        3,
     ],
     [
-        ,
-        'Vinyl records and mixtapes only.',
-        'http://unstablegameswiki.com/images/0/06/UU-Base-017-SE.png',
+        {
+            desc: 'Vinyl records and mixtapes only.',
+            img: '/images/0/06/UU-Base-017-SE.png',
+        },
+        3,
     ],
     [
-        ,
-        'Popped collars are for date nights only.',
-        'http://unstablegameswiki.com/images/0/06/UU-Base-018-SE.png',
+        {
+            desc: 'Popped collars are for date nights only.',
+            img: '/images/0/06/UU-Base-018-SE.png',
+        },
+        3,
     ],
     [
-        ,
-        '💖🙌💅🙌💖💁‍♀️💁‍♀️😂😂😂',
-        'http://unstablegameswiki.com/images/6/65/UU-Base-019-SE.png',
+        {
+            desc: '💖🙌💅🙌💖💁‍♀️💁‍♀️😂😂😂',
+            img: '/images/6/65/UU-Base-019-SE.png',
+        },
+        3,
     ],
     [
-        ,
-        '#nomakeup #nofilter #sunnies #shameless #selfie #basic #TGIF #unicornhairdontcare',
-        'http://unstablegameswiki.com/images/4/4c/UU-Base-020-SE.png',
+        {
+            desc: '#nomakeup #nofilter #sunnies #shameless #selfie #basic #TGIF #unicornhairdontcare',
+            img: '/images/4/4c/UU-Base-020-SE.png',
+        },
+        3,
     ],
     [
-        'Basic Narwhal',
-        'This card has no special powers, but it sure is cute!',
-        'http://unstablegameswiki.com/images/8/80/UU-Base-021-SE.png',
+        {
+            name: 'Basic Narwhal',
+            desc: 'This card has no special powers, but it sure is cute!',
+            img: '/images/8/80/UU-Base-021-SE.png',
+        },
+        1,
     ],
-]);
+];

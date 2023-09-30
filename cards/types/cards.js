@@ -1,41 +1,21 @@
 class Card {
-    constructor(name, desc, img) {
-        this.name = name;
-        this.desc = desc;
-        this.img = img;
+    constructor(data) {
+        this.name = data.name;
+        this.desc = data.desc;
+        this.img = data.img;
         Object.freeze(this);
     }
 }
 
-class Downgrade extends Card {
-    constructor(name, desc, img) {
-        super(name, desc, img);
-    }
-}
+class Downgrade extends Card {}
 
-class Magic extends Card {
-    constructor(name, desc, img) {
-        super(name, desc, img);
-    }
-}
+class Magic extends Card {}
 
-class Instant extends Card {
-    constructor(name, desc, img) {
-        super(name, desc, img);
-    }
-}
+class Instant extends Card {}
 
-class Unicorn extends Card {
-    constructor(name, desc, img) {
-        super(name, desc, img);
-    }
-}
+class Unicorn extends Card {}
 
-class Upgrade extends Card {
-    constructor(name, desc, img) {
-        super(name, desc, img);
-    }
-}
+class Upgrade extends Card {}
 
 module.exports = {
     Card,

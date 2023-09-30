@@ -1,28 +1,12 @@
 const Stack = require('./types');
 
-class Deck extends Stack {
-    constructor(cards) {
-        super(cards);
-    }
-}
+class Deck extends Stack {}
 
-class DiscardPile extends Stack {
-    constructor() {
-        super();
-    }
-}
+class DiscardPile extends Stack {}
 
-class Nursery extends Stack {
-    constructor(cards) {
-        super(cards);
-    }
-}
+class Nursery extends Stack {}
 
-class Stable extends Stack {
-    constructor() {
-        super();
-    }
-}
+class Stable extends Stack {}
 
 module.exports = {
     Deck,

@@ -1,13 +1,13 @@
 (function () {
-    const baseDeck = require('./cards/base-deck');
+    const { demo } = require('./cards/base-deck');
     const deck = [
-        ['#baby-unicorn', baseDeck.unicorn.baby],
-        ['#basic-unicorn', baseDeck.unicorn.basic],
-        ['#magical-unicorn', baseDeck.unicorn.magical],
-        ['#magic', baseDeck.magic],
-        ['#upgrade', baseDeck.upgrade],
-        ['#downgrade', baseDeck.downgrade],
-        ['#instant', baseDeck.instant],
+        ['#baby-unicorn', demo.unicorn.baby],
+        ['#basic-unicorn', demo.unicorn.basic],
+        ['#magical-unicorn', demo.unicorn.magical],
+        ['#magic', demo.magic],
+        ['#upgrade', demo.upgrade],
+        ['#downgrade', demo.downgrade],
+        ['#instant', demo.instant],
     ];
 
     for (let row = 0; row < deck.length; row++) {
@@ -23,7 +23,8 @@
             if (row > 1 || col > 4) {
                 img.loading = 'lazy';
             }
-            const url = 'wsrv.nl/?url=' + el.img + '&w=400';
+            const url =
+                'wsrv.nl/?url=http://unstablegameswiki.com' + el.img + '&w=400';
             img.src =
                 'https://' +
                 url +
