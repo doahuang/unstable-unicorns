@@ -18,8 +18,11 @@ class Stack {
         this.#cards.push(card);
     }
 
-    remove(index) {
-        this.#cards.splice(index, 1);
+    remove(card) {
+        const idx = this.cards.findIndex((el) => el === card);
+        if (idx > -1) {
+            this.#cards.splice(idx, 1);
+        }
     }
 
     draw() {

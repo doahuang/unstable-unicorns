@@ -1,4 +1,4 @@
-const { Unicorn } = require('./cards');
+const { Unicorn } = require('./types');
 
 class BabyUnicorn extends Unicorn {
     constructor(data) {

@@ -1,9 +1,5 @@
-const { Downgrade, Magic, Instant, Upgrade } = require('../types/cards');
-const {
-    BabyUnicorn,
-    BasicUnicorn,
-    MagicalUnicorn,
-} = require('../types/unicorns');
+const { Downgrade, Magic, Instant, Upgrade } = require('../types');
+const { BabyUnicorn, BasicUnicorn, MagicalUnicorn } = require('../unicorns');
 const { genCards } = require('../../utils');
 const downgrade = require('./downgrade');
 const magic = require('./magic');
