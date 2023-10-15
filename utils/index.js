@@ -1,12 +1,12 @@
 module.exports = {
     genCards: (list, Card, isDemo) => {
         const arr = [];
-        for (let [el, count] of list) {
+        for (let [data, count] of list) {
             if (isDemo) {
-                arr.push(new Card(el));
+                arr.push(new Card(data));
             } else {
                 for (let idx = 0; idx < count; idx++) {
-                    arr.push(new Card(el));
+                    arr.push(new Card(data));
                 }
             }
         }

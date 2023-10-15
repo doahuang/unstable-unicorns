@@ -1,12 +1,12 @@
-const { Unicorn } = require('../cards/types');
 const Player = require('./player');
 const Table = require('./table');
-const editions = require('./editions');
 
 class Game {
-    constructor(players = [], edition = editions.base) {
+    constructor(players = [], edition = require('./editions').base) {
         this.table = new Table(edition);
-        this.players = players.map((el) => new Player(el));
+        this.players = players.map((data) => {
+            return new Player({ ...data, discardPile: this.table.discardPile });
+        });
         Object.freeze(this);
     }
 
@@ -23,7 +23,7 @@ class Game {
     }
 
     get isOver() {
-        this.players.find((player) => player.count(Unicorn) > 6);
+        return this.players.find((player) => player.isWinner);
     }
 }
 

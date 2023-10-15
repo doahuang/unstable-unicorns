@@ -1,6 +1,6 @@
+const { genCards } = require('../../utils');
 const { Downgrade, Magic, Instant, Upgrade } = require('../types');
 const { BabyUnicorn, BasicUnicorn, MagicalUnicorn } = require('../unicorns');
-const { genCards } = require('../../utils');
 const downgrade = require('./downgrade');
 const magic = require('./magic');
 const instant = require('./instant');
@@ -20,14 +20,14 @@ module.exports = {
         nursery: genCards(unicorn.baby, BabyUnicorn),
     },
     demo: {
-        downgrade: genCards(downgrade, Downgrade, true),
-        instant: genCards(instant, Instant, true),
-        magic: genCards(magic, Magic, true),
         unicorn: {
             baby: genCards(unicorn.baby, BabyUnicorn, true),
             basic: genCards(unicorn.basic, BasicUnicorn, true),
             magical: genCards(unicorn.magical, MagicalUnicorn, true),
         },
+        magic: genCards(magic, Magic, true),
         upgrade: genCards(upgrade, Upgrade, true),
+        downgrade: genCards(downgrade, Downgrade, true),
+        instant: genCards(instant, Instant, true),
     },
 };

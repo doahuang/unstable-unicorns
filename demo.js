@@ -1,4 +1,4 @@
-(function () {
+(() => {
     const { demo } = require('./cards/base-deck');
     const deck = [
         ['#baby-unicorn', demo.unicorn.baby],
