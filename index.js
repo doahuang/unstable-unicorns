@@ -1,28 +1,59 @@
 const Game = require('./game');
 
-const game = new Game([{ name: 'p1' }, { name: 'p2' }]);
-const deck = game.table.deck;
-const nursery = game.table.nursery;
-const discardPile = game.table.discardPile;
-const [p1, p2] = game.players;
+const rl = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
+const game = new Game(
+    ['Human 1', 'Bot 1', 'Bot 2', 'Bot 3'].map((name) => ({
+        name,
+        type: name.startsWith('Bot') ? 'bot' : 'human',
+    }))
+);
+const { deck, discardPile, nursery } = game.table;
 
-console.log('new game');
-console.log('deck count:', deck.count);
-console.log('nursery count:', nursery.count);
-console.log('disacrd pile count:', discardPile.count);
+let inited = false;
 
-game.init();
+console.clear();
+console.log('Welcome to Unstable Unicorns');
+rl.prompt();
 
-console.log('deck count:', deck.count);
-console.log('nursery count:', nursery.count);
-console.log('p1:', p1.hand.count, p1.stable.count);
-console.log('p2:', p2.hand.count, p2.stable.count);
+const info = () => {
+    console.clear();
+    console.log('Deck:', deck.count);
+    console.log('Nursery:', nursery.count);
+    console.log('Disacrd pile:', discardPile.count);
+    for (const { name, hand, stable } of game.players) {
+        console.log(name + ': hand', hand.count, 'stable', stable.count);
+    }
+};
 
-while (!game.isOver) {
-    // player takes turn clockwise
-    // each turn has 4 phases
-    // bot/beginning of turn
-    // draw
-    // action
-    // eot/end of turn
-}
+rl.on('line', (input) => {
+    if (!inited) {
+        game.init();
+        inited = true;
+    } else {
+        const self = game.players[0];
+        if (game.currentPlayer === self) {
+            self.draw(deck);
+            self.action(deck);
+            self.eot();
+        } else {
+            const bot = game.currentPlayer;
+            bot.draw(deck);
+            bot.action(deck);
+            bot.eot();
+        }
+        game.endPlayerTurn();
+    }
+    info();
+    if (!deck.count || game.winner) {
+        rl.close();
+    }
+    console.log('\r');
+    console.log(game.currentPlayer.name + "'s turn");
+    rl.prompt();
+}).on('close', () => {
+    console.log('\nGame over!', game.winner ? game.winner.name + ' won.' : '');
+    process.exit(0);
+});

@@ -33,6 +33,17 @@ class Stack {
         }
     }
 
+    find(type) {
+        return this.cards.find((card) => card instanceof type);
+    }
+
+    shuffle() {
+        for (let i = this.count - 1; i > 0; i--) {
+            const j = (Math.random() * (i + 1)) | 0;
+            [this.#cards[i], this.#cards[j]] = [this.#cards[j], this.#cards[i]];
+        }
+    }
+
     draw(from) {
         const card = from.#draw();
         if (card) {

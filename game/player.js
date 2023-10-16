@@ -14,7 +14,7 @@ class Player {
 
     get isWinner() {
         let count = 0;
-        for (const card of this.hand.cards) {
+        for (const card of this.stable.cards) {
             count += +(card instanceof Unicorn);
         }
         return count > 6;
