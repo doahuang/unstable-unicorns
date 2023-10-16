@@ -1,4 +1,4 @@
-const Game = require('./game');
+const Game = require('./src/game');
 
 const rl = require('readline').createInterface({
     input: process.stdin,
