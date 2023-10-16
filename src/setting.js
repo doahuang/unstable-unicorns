@@ -7,6 +7,6 @@ module.exports = {
         { name: 'Bot 2', type: Bot },
         { name: 'Bot 3', type: Bot },
     ],
-    edition: require('./editions').Base,
+    edition: require('./decks/base'),
     phases: ['BEGINNING_OF_TURN', 'DRAW', 'ACTION', 'END_OF_TURN'],
 };

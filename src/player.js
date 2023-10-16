@@ -4,14 +4,12 @@ const {
     Magic,
     Unicorn,
     Upgrade,
-} = require('../cards/types');
+} = require('./decks/types');
 const { Hand, Stable } = require('./types');
 
 class Player {
-    #discardPile;
-
     constructor(data) {
-        this.#discardPile = data.discardPile;
+        this.discardPile = data.discardPile;
         this.name = data.name;
         this.hand = new Hand();
         this.stable = new Stable();
@@ -19,7 +17,7 @@ class Player {
 
     get isWinner() {
         let count = 0;
-        for (const card of this.stable.cards) {
+        for (let card of this.stable.cards) {
             count += +(card instanceof Unicorn);
         }
         return count > 6;
@@ -29,7 +27,7 @@ class Player {
         if ([Downgrade, Unicorn, Upgrade].some((el) => card instanceof el)) {
             this.hand.move(card, this.stable);
         } else {
-            this.hand.move(card, this.#discardPile);
+            this.hand.move(card, this.discardPile);
         }
     }
 
@@ -42,10 +40,10 @@ class Player {
     }
 
     discard(card) {
-        this.hand.move(card, this.#discardPile);
+        this.hand.move(card, this.discardPile);
     }
 
-    sacrifice(card, stack = this.#discardPile) {
+    sacrifice(card, stack = this.discardPile) {
         this.stable.move(card, stack);
     }
 

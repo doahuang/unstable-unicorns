@@ -1,14 +1,12 @@
 const { genPlayers } = require('./utils');
-const Table = require('./table');
-const { Round } = require('./types');
+const { Deck, DiscardPile, Nursery, Round } = require('./types');
 
 class Game {
     constructor(data = require('./setting')) {
-        const { deck, discardPile, nursery } = new Table(data.edition);
-        this.deck = deck;
-        this.discardPile = discardPile;
-        this.nursery = nursery;
-        this.players = genPlayers(data.players, discardPile);
+        this.deck = new Deck(data.edition.deck).shuffle();
+        this.discardPile = new DiscardPile();
+        this.nursery = new Nursery(data.edition.nursery).shuffle();
+        this.players = genPlayers(data.players, this.discardPile);
         this.round = new Round(this.players);
     }
 
@@ -17,9 +15,7 @@ class Game {
     }
 
     init() {
-        this.deck.shuffle();
-
-        for (const player of this.players) {
+        for (let player of this.players) {
             player.draw(this.deck, 5);
             const card = player.draw(this.nursery);
             player.play(card);

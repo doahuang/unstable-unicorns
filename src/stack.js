@@ -1,12 +1,6 @@
 class Stack {
-    #cards;
-
     constructor(cards = []) {
-        this.#cards = cards;
-    }
-
-    get cards() {
-        return this.#cards.slice();
+        this.cards = cards;
     }
 
     get count() {
@@ -14,11 +8,11 @@ class Stack {
     }
 
     #add(card) {
-        this.#cards.push(card);
+        this.cards.push(card);
     }
 
     #draw() {
-        return this.#cards.pop();
+        return this.cards.pop();
     }
 
     #has(card) {
@@ -28,7 +22,7 @@ class Stack {
     #remove(card) {
         const idx = this.cards.findIndex((el) => el === card);
         if (idx > -1) {
-            this.#cards.splice(idx, 1);
+            this.cards.splice(idx, 1);
         }
     }
 
@@ -39,8 +33,9 @@ class Stack {
     shuffle() {
         for (let i = this.count - 1; i > 0; i--) {
             const j = (Math.random() * (i + 1)) | 0;
-            [this.#cards[i], this.#cards[j]] = [this.#cards[j], this.#cards[i]];
+            [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
         }
+        return this;
     }
 
     draw(from) {

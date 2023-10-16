@@ -24,18 +24,6 @@ class Round extends Queue {
     }
 }
 
-// const players = [1, 2, 3, 4];
-// const turns = players.map((player) => new Turn(player));
-// const round = new Round(turns);
-// for (let idx = 0; idx < round.count; idx++) {
-//     const turn = round.current;
-//     for (let idx = 0; idx < turn.count; idx++) {
-//         const next = turn.next;
-//         turn.end();
-//         !next && round.end();
-//     }
-// }
-
 module.exports = {
     Deck,
     DiscardPile,
@@ -43,4 +31,5 @@ module.exports = {
     Nursery,
     Round,
     Stable,
+    Turn,
 };

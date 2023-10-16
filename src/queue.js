@@ -1,20 +1,20 @@
 class Queue {
     #idx = 0;
 
-    constructor(queue = []) {
-        this.queue = queue;
+    constructor(arr = []) {
+        this.arr = arr;
     }
 
     get count() {
-        return this.queue.length;
+        return this.arr.length;
     }
 
     get current() {
-        return this.queue[this.#idx];
+        return this.arr[this.#idx];
     }
 
     get next() {
-        return this.queue[this.#idx + 1];
+        return this.arr[this.#idx + 1];
     }
 
     end() {

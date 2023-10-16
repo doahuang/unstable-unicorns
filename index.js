@@ -18,7 +18,7 @@ const info = () => {
     console.log('Deck:', deck.count);
     console.log('Nursery:', nursery.count);
     console.log('Disacrd pile:', discardPile.count);
-    for (const { name, hand, stable } of game.players) {
+    for (let { name, hand, stable } of game.players) {
         console.log(name + ': hand', hand.count, 'stable', stable.count);
     }
 };
