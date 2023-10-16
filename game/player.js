@@ -1,4 +1,10 @@
-const { Downgrade, Unicorn, Upgrade } = require('../cards/types');
+const {
+    Downgrade,
+    Instant,
+    Magic,
+    Unicorn,
+    Upgrade,
+} = require('../cards/types');
 const { Hand, Stable } = require('./types');
 
 class Player {
@@ -9,7 +15,6 @@ class Player {
         this.name = data.name;
         this.hand = new Hand();
         this.stable = new Stable();
-        Object.freeze(this);
     }
 
     get isWinner() {
@@ -28,8 +33,12 @@ class Player {
         }
     }
 
-    draw(from) {
-        return this.hand.draw(from);
+    draw(from, num = 1) {
+        let card;
+        for (let idx = 0; idx < num; idx++) {
+            card = this.hand.draw(from);
+        }
+        return card;
     }
 
     discard(card) {
@@ -49,4 +58,40 @@ class Player {
     }
 }
 
-module.exports = Player;
+class Bot extends Player {
+    get random() {
+        const idx = (Math.random() * this.hand.count) | 0;
+        return this.hand.cards[idx];
+    }
+
+    action(deck) {
+        const card = this.hand.find(Unicorn);
+        if (card) {
+            super.play(card);
+        } else {
+            if (this.hand.count < 7 || (Math.random() * 2) | 0) {
+                this.draw(deck);
+            } else {
+                super.play(this.random);
+            }
+        }
+    }
+
+    eot() {
+        while (this.hand.count > 7) {
+            let card;
+            [Downgrade, Instant, Magic, Upgrade].some((type) => {
+                card = this.hand.find(type);
+                return card;
+            });
+            this.discard(card || this.random);
+        }
+    }
+}
+
+class Human extends Bot {}
+
+module.exports = {
+    Bot,
+    Human,
+};

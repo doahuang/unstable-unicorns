@@ -1,15 +1,8 @@
 class Queue {
-    #idx;
-    #queue;
+    #idx = 0;
 
     constructor(queue = []) {
-        this.#idx = 0;
-        this.#queue = queue;
-        Object.freeze(this);
-    }
-
-    get queue() {
-        return this.#queue.slice();
+        this.queue = queue;
     }
 
     get count() {
@@ -20,12 +13,12 @@ class Queue {
         return this.queue[this.#idx];
     }
 
-    get #next() {
-        return (this.#idx + 1) % this.count;
+    get next() {
+        return this.queue[this.#idx + 1];
     }
 
     end() {
-        this.#idx = this.#next;
+        this.#idx = (this.#idx + 1) % this.count;
     }
 }
 

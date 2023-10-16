@@ -3,7 +3,6 @@ class Card {
         this.name = data.name;
         this.desc = data.desc;
         this.img = data.img;
-        Object.freeze(this);
     }
 }
 

@@ -1,38 +1,27 @@
 const { genPlayers } = require('./utils');
 const Table = require('./table');
-const { Turn } = require('./types');
+const { Round } = require('./types');
 
 class Game {
-    #turn;
-
-    constructor(players = [], edition = require('./editions').Base) {
-        this.table = new Table(edition);
-        this.players = genPlayers(players, this.table.discardPile);
-        this.#turn = new Turn(this.players);
-        Object.freeze(this);
+    constructor(data = require('./setting')) {
+        const { deck, discardPile, nursery } = new Table(data.edition);
+        this.deck = deck;
+        this.discardPile = discardPile;
+        this.nursery = nursery;
+        this.players = genPlayers(data.players, discardPile);
+        this.round = new Round(this.players);
     }
 
     get winner() {
         return this.players.find((player) => player.isWinner);
     }
 
-    get currentPlayer() {
-        return this.#turn.current;
-    }
-
-    endPlayerTurn() {
-        this.#turn.end();
-    }
-
     init() {
-        this.table.deck.shuffle();
-        for (let idx = 0; idx < 5; idx++) {
-            for (const player of this.players) {
-                player.draw(this.table.deck);
-            }
-        }
+        this.deck.shuffle();
+
         for (const player of this.players) {
-            const card = player.draw(this.table.nursery);
+            player.draw(this.deck, 5);
+            const card = player.draw(this.nursery);
             player.play(card);
         }
     }

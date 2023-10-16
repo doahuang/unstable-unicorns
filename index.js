@@ -4,13 +4,8 @@ const rl = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout,
 });
-const game = new Game(
-    ['Human 1', 'Bot 1', 'Bot 2', 'Bot 3'].map((name) => ({
-        name,
-        type: name.startsWith('Bot') ? 'bot' : 'human',
-    }))
-);
-const { deck, discardPile, nursery } = game.table;
+const game = new Game();
+const { deck, discardPile, nursery } = game;
 
 let inited = false;
 
@@ -33,25 +28,18 @@ rl.on('line', (input) => {
         game.init();
         inited = true;
     } else {
-        const self = game.players[0];
-        if (game.currentPlayer === self) {
-            self.draw(deck);
-            self.action(deck);
-            self.eot();
-        } else {
-            const bot = game.currentPlayer;
-            bot.draw(deck);
-            bot.action(deck);
-            bot.eot();
-        }
-        game.endPlayerTurn();
+        const { player } = game.round.current;
+        player.draw(deck);
+        player.action(deck);
+        player.eot();
+        game.round.end();
     }
     info();
     if (!deck.count || game.winner) {
         rl.close();
     }
     console.log('\r');
-    console.log(game.currentPlayer.name + "'s turn");
+    console.log(game.round.current.player.name + "'s turn");
     rl.prompt();
 }).on('close', () => {
     console.log('\nGame over!', game.winner ? game.winner.name + ' won.' : '');

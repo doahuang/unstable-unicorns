@@ -3,7 +3,6 @@ class Stack {
 
     constructor(cards = []) {
         this.#cards = cards;
-        Object.freeze(this);
     }
 
     get cards() {
