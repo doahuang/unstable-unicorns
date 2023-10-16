@@ -1,5 +1,5 @@
 (() => {
-    const { demo } = require('./cards/base-deck');
+    const demo = require('./cards/base-deck/demo');
     const deck = [
         ['#baby-unicorn', demo.unicorn.baby],
         ['#basic-unicorn', demo.unicorn.basic],

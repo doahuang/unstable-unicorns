@@ -1,3 +1,3 @@
 module.exports = {
-    base: require('../cards/base-deck').edition,
+    Base: require('../cards/base-deck'),
 };

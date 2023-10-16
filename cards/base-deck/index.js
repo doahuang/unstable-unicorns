@@ -1,33 +1,16 @@
-const { genCards } = require('../../utils');
+const { genCards } = require('../utils');
 const { Downgrade, Magic, Instant, Upgrade } = require('../types');
 const { BabyUnicorn, BasicUnicorn, MagicalUnicorn } = require('../unicorns');
-const downgrade = require('./downgrade');
-const magic = require('./magic');
-const instant = require('./instant');
-const unicorn = require('./unicorn');
-const upgrade = require('./upgrade');
+const { baby, basic, magical } = require('./unicorn');
 
 module.exports = {
-    edition: {
-        deck: [
-            ...genCards(downgrade, Downgrade),
-            ...genCards(instant, Instant),
-            ...genCards(magic, Magic),
-            ...genCards(unicorn.basic, BasicUnicorn),
-            ...genCards(unicorn.magical, MagicalUnicorn),
-            ...genCards(upgrade, Upgrade),
-        ],
-        nursery: genCards(unicorn.baby, BabyUnicorn),
-    },
-    demo: {
-        unicorn: {
-            baby: genCards(unicorn.baby, BabyUnicorn, true),
-            basic: genCards(unicorn.basic, BasicUnicorn, true),
-            magical: genCards(unicorn.magical, MagicalUnicorn, true),
-        },
-        magic: genCards(magic, Magic, true),
-        upgrade: genCards(upgrade, Upgrade, true),
-        downgrade: genCards(downgrade, Downgrade, true),
-        instant: genCards(instant, Instant, true),
-    },
+    deck: [
+        ...genCards(require('./downgrade'), Downgrade),
+        ...genCards(require('./instant'), Instant),
+        ...genCards(require('./magic'), Magic),
+        ...genCards(basic, BasicUnicorn),
+        ...genCards(magical, MagicalUnicorn),
+        ...genCards(require('./upgrade'), Upgrade),
+    ],
+    nursery: genCards(baby, BabyUnicorn),
 };

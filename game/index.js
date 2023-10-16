@@ -5,7 +5,7 @@ const { Turn } = require('./types');
 class Game {
     #turn;
 
-    constructor(players = [], edition = require('./editions').base) {
+    constructor(players = [], edition = require('./editions').Base) {
         this.table = new Table(edition);
         this.players = genPlayers(players, this.table.discardPile);
         this.#turn = new Turn(this.players);
